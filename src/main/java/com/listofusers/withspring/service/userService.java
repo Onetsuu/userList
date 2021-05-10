@@ -1,5 +1,6 @@
 package com.listofusers.withspring.service;
 
+import com.listofusers.withspring.Requests.userPostRequestBody;
 import com.listofusers.withspring.domain.user;
 import com.listofusers.withspring.repository.userRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,33 +18,34 @@ public class userService {
     public List<user> listNonPageable(){
         return repository.findAll();
     }
-    public user findById(Long id){
-        return repository.findById(id).orElseThrow();
-    }
+
+//    public user findById(Long id){
+//        return repository.findById(id).orElseThrow();
+//    }
     @Transactional
-    public user save(user user){
+    public user save(userPostRequestBody userPostRequestBody){
         return repository.save(user.builder()
-                .nome(user.getNome())
-                .cpf(user.getCpf())
-                .rg(user.getRg())
+                .name(userPostRequestBody.getName())
+                .cpf(userPostRequestBody.getCpf())
+                .rg(userPostRequestBody.getRg())
                 .build());
     }
-    public void delete(Long id){
-        repository.delete(findById(id));
-    }
-    public void replace(user user){
-        findById(user.getId());
-
-        user user1 = user.builder()
-                .nome(user.getNome())
-                .cpf(user.getCpf())
-                .rg(user.getRg())
-                .build();
-
-        repository.save(user1);
-    }
-    public List<user> findByName(String nome){
-        return repository.findByName(nome);
-    }
+//    public void delete(Long id){
+//        repository.delete(findById(id));
+//    }
+//    public void replace(user user){
+//        findById(user.getId());
+//
+//        user user1 = user.builder()
+//                .nome(user.getNome())
+//                .cpf(user.getCpf())
+//                .rg(user.getRg())
+//                .build();
+//
+//        repository.save(user1);
+//    }
+//    public List<user> findByName(String nome){
+//        return repository.findByName(nome);
+//    }
 
 }

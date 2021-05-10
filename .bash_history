@@ -9,3 +9,13 @@ git remote add origin git remote add origin
 git remote add origin https://github.com/Onetsuu/userList.git
 git push origin master
 git status
+git status
+git add .
+git push
+git push origin master
+status
+git status
+git status
+git commit -m "estruturando a classe service do user"
+git status
+git push origin master
