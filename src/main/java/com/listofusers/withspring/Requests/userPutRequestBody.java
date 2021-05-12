@@ -12,8 +12,10 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class userPostRequestBody {
-
+public class userPutRequestBody {
+    @NotNull
+    @NotEmpty
+    private Long id;
     @NotNull
     @NotEmpty
     private String name;

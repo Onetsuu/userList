@@ -19,3 +19,9 @@ git status
 git commit -m "estruturando a classe service do user"
 git status
 git push origin master
+git status
+git add .
+git commit -m "userPostResquestBody, Ends points listarAll e save"
+git push origin master
+git status
+git done

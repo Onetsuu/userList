@@ -1,6 +1,7 @@
 package com.listofusers.withspring.service;
 
 import com.listofusers.withspring.Requests.userPostRequestBody;
+import com.listofusers.withspring.Requests.userPutRequestBody;
 import com.listofusers.withspring.domain.user;
 import com.listofusers.withspring.repository.userRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,9 @@ public class userService {
         return repository.findAll();
     }
 
-//    public user findById(Long id){
-//        return repository.findById(id).orElseThrow();
-//    }
+    public user findById(Long id){
+        return repository.findById(id).orElseThrow();
+    }
     @Transactional
     public user save(userPostRequestBody userPostRequestBody){
         return repository.save(user.builder()
@@ -30,20 +31,22 @@ public class userService {
                 .rg(userPostRequestBody.getRg())
                 .build());
     }
-//    public void delete(Long id){
-//        repository.delete(findById(id));
-//    }
-//    public void replace(user user){
-//        findById(user.getId());
-//
-//        user user1 = user.builder()
-//                .nome(user.getNome())
-//                .cpf(user.getCpf())
-//                .rg(user.getRg())
-//                .build();
-//
-//        repository.save(user1);
-//    }
+    public void delete(Long id){
+        repository.delete(findById(id));
+    }
+    public void replace(userPutRequestBody userPutRequestBody){
+        findById(userPutRequestBody.getId());
+
+        user User = user.builder()
+                .id(userPutRequestBody.getId())
+                .name(userPutRequestBody.getName())
+                .rg(userPutRequestBody.getRg())
+                .cpf(userPutRequestBody.getCpf())
+                .build();
+
+        repository.save(User);
+
+    }
 //    public List<user> findByName(String nome){
 //        return repository.findByName(nome);
 //    }
