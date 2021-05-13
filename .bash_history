@@ -25,3 +25,9 @@ git commit -m "userPostResquestBody, Ends points listarAll e save"
 git push origin master
 git status
 git done
+git status
+git add .
+git status
+git commit -m "Endpoints Delete, put e findById"
+git push
+git push origin master

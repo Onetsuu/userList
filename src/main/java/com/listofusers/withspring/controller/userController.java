@@ -32,6 +32,15 @@ public class userController {
         return ResponseEntity.ok(userService.findById(id));
     }
 
+    @GetMapping("/findByName")
+    public ResponseEntity<List<user>> findByName(@RequestParam String name){
+        return ResponseEntity.ok(userService.findByName(name));
+    }
+    @GetMapping("/findByCpf")
+    public ResponseEntity<List<user>> findByCpf(@RequestParam String cpf){
+        return ResponseEntity.ok(userService.findByCpf(cpf));
+    }
+
     @PostMapping
     public ResponseEntity<user> save(@RequestBody userPostRequestBody userPostRequestBody){
         return new ResponseEntity<>(userService.save(userPostRequestBody)
@@ -48,6 +57,7 @@ public class userController {
         userService.replace(userPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
 
 

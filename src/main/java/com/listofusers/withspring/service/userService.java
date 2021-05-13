@@ -47,8 +47,12 @@ public class userService {
         repository.save(User);
 
     }
-//    public List<user> findByName(String nome){
-//        return repository.findByName(nome);
-//    }
+    public List<user> findByName(String nome){
+        return repository.findByName(nome);
+    }
+
+    public List<user> findByCpf(String cpf){
+        return repository.findByCpf(cpf);
+    }
 
 }
