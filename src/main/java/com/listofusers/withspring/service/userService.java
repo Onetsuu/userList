@@ -3,11 +3,11 @@ package com.listofusers.withspring.service;
 import com.listofusers.withspring.Requests.userPostRequestBody;
 import com.listofusers.withspring.Requests.userPutRequestBody;
 import com.listofusers.withspring.domain.user;
+import com.listofusers.withspring.exceptions.BadRequestException;
 import com.listofusers.withspring.repository.userRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
@@ -21,7 +21,8 @@ public class userService {
     }
 
     public user findById(Long id){
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElseThrow(()->new BadRequestException("User not found!")
+        );
     }
     @Transactional
     public user save(userPostRequestBody userPostRequestBody){

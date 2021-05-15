@@ -31,3 +31,11 @@ git status
 git commit -m "Endpoints Delete, put e findById"
 git push
 git push origin master
+git status
+git add .
+git commit -m "Endpoints FindByName e FindByCpf"
+git push origin master
+git status
+git add .
+git commit -m "configurando DB local"
+git push origin master
