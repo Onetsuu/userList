@@ -39,3 +39,7 @@ git status
 git add .
 git commit -m "configurando DB local"
 git push origin master
+git status
+git add .
+git commit -m "BadRequestException para FindById"
+git push origin master
