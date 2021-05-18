@@ -43,3 +43,7 @@ git status
 git add .
 git commit -m "BadRequestException para FindById"
 git push origin master
+git status
+git add .
+git commit -m "Estruturação do UserControlerTest e utilitários"
+git push origin master

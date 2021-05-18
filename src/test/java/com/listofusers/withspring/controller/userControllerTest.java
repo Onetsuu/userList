@@ -2,9 +2,13 @@ package com.listofusers.withspring.controller;
 
 import com.listofusers.withspring.Requests.userPostRequestBody;
 import com.listofusers.withspring.Requests.userPutRequestBody;
+import com.listofusers.withspring.domain.user;
 import com.listofusers.withspring.service.userService;
 import com.listofusers.withspring.util.userCreator;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
@@ -12,9 +16,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 @ExtendWith(SpringExtension.class)
 class userControllerTest {
@@ -40,13 +45,71 @@ class userControllerTest {
 
         BDDMockito.when(userServiceMock.save(ArgumentMatchers.any(userPostRequestBody.class)))
                 .thenReturn(userCreator.createValidUser());
-        
+
         BDDMockito.doNothing().when(userServiceMock).replace(ArgumentMatchers.any(userPutRequestBody.class));
 
         BDDMockito.doNothing().when(userServiceMock).delete(ArgumentMatchers.anyLong());
 
 
+    }
+    @Test
+    @DisplayName("ListAll returns list of users when sucessful")
+    void ListAll_ReturnsListOfUsers_whenSucessfull(){
+        String expectedName = userCreator.createValidUser().getName();
+        String expectedCpf = userCreator.createValidUser().getCpf();
+        String expectedRg = userCreator.createValidUser().getRg();
 
+        List<user> users = userController.ListOfAllUsers().getBody();
+
+        Assertions.assertThat(users).
+                isNotNull().
+                isNotEmpty().
+                hasSize(1);
+
+        Assertions.assertThat(users.get(0).getName()).isEqualTo(expectedName);
+        Assertions.assertThat(users.get(0).getCpf()).isEqualTo(expectedCpf);
+        Assertions.assertThat(users.get(0).getRg()).isEqualTo(expectedRg);
+
+    }
+    @Test
+    @DisplayName("findById returns an users when sucessful")
+    void findById_ReturnsAnUser_whenSucessfull(){
+        Long expectedId = userCreator.createValidUser().getId();
+
+
+        user user = userController.findById(1L).getBody();
+
+        Assertions.assertThat(user).
+                isNotNull();
+
+        Assertions.assertThat(user.getId()).isEqualTo(expectedId);
+
+    }
+    @Test
+    @DisplayName("findByName returns user list when Sucessful")
+    void findByName_ReturnsUserList_whenSucessfull(){
+        String expectedName = userCreator.createValidUser().getName();
+
+        List<user> users = userController.findByName("").getBody();
+
+        Assertions.assertThat(users).
+                isNotNull().
+                isNotEmpty().
+                hasSize(1);
+
+        Assertions.assertThat(users.get(0).getName()).isEqualTo(expectedName);
+    }
+    @Test
+    @DisplayName("findByName returns an empty user list when unsucessful")
+    void findByName_ReturnsEmptyUserList_whenUnsucessfull(){
+        BDDMockito.when(userServiceMock.findByName(ArgumentMatchers.anyString()))
+                .thenReturn(Collections.emptyList());
+
+        List<user> users = userController.findByName("").getBody();
+
+        Assertions.assertThat(users).
+                isNotNull().
+                isEmpty();
 
     }
 
