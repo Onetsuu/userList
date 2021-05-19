@@ -47,3 +47,7 @@ git status
 git add .
 git commit -m "Estruturação do UserControlerTest e utilitários"
 git push origin master
+git add .
+git status
+git commit -m "tests na classe userController pt1"
+git push origin master

@@ -22,37 +22,37 @@ public class userController {
     private userService userService;
 
 
-    @GetMapping("/ListOfAllUsers")
+    @GetMapping("/ListOfAllUsers") //testado
     public ResponseEntity<List<user>> ListOfAllUsers(){
         return new ResponseEntity<>(userService.listNonPageable()
         ,HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //testado
     public ResponseEntity<user> findById(@PathVariable long id){
         return ResponseEntity.ok(userService.findById(id));
     }
 
-    @GetMapping("/findByName")
+    @GetMapping("/findByName") //testado
     public ResponseEntity<List<user>> findByName(@RequestParam String name){
         return ResponseEntity.ok(userService.findByName(name));
     }
-    @GetMapping("/findByCpf")
+    @GetMapping("/findByCpf") //testado
     public ResponseEntity<List<user>> findByCpf(@RequestParam String cpf){
         return ResponseEntity.ok(userService.findByCpf(cpf));
     }
 
-    @PostMapping
+    @PostMapping //testado
     public ResponseEntity<user> save(@RequestBody userPostRequestBody userPostRequestBody){
         return new ResponseEntity<>(userService.save(userPostRequestBody)
         ,HttpStatus.OK);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")//testado
     public ResponseEntity<Void> delete(@PathVariable long id){
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping
+    @PutMapping//testado
     public ResponseEntity<Void> put(@RequestBody userPutRequestBody userPutRequestBody){
         userService.replace(userPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
