@@ -51,3 +51,7 @@ git add .
 git status
 git commit -m "tests na classe userController pt1"
 git push origin master
+git status
+git add .
+git commit -m "userController Test pt2, completo."
+git push origin master

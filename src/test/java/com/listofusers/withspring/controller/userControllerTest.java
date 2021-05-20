@@ -34,8 +34,7 @@ class userControllerTest {
     private userController userController;
     @Mock
     private userService userServiceMock;
-    @Mock
-    private userRepository userRepository;
+
 
     @BeforeEach
     void setUp(){
@@ -97,7 +96,7 @@ class userControllerTest {
     @Test
     @DisplayName("findByIdByController returns badRequestException.title when Unsucessful")
     void findByIdByController_ReturnsABadRequestExceptionTtitle_whenUnsucessful(){
-        BDDMockito.when(userRepository.findById(ArgumentMatchers.anyLong()))
+        BDDMockito.when(userServiceMock.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(null);
 
         user user = userController.findById(1L).getBody();
