@@ -55,3 +55,8 @@ git status
 git add .
 git commit -m "userController Test pt2, completo."
 git push origin master
+git status
+git add .
+git commit -m "userServiceTest pt1, estruturação para o testes"
+git push origin mater
+git push origin master

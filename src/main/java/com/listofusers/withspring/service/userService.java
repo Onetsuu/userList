@@ -35,6 +35,7 @@ public class userService {
     public void delete(Long id){
         repository.delete(findById(id));
     }
+
     public void replace(userPutRequestBody userPutRequestBody){
         findById(userPutRequestBody.getId());
 

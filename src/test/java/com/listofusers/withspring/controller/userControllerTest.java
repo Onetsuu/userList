@@ -3,14 +3,10 @@ package com.listofusers.withspring.controller;
 import com.listofusers.withspring.Requests.userPostRequestBody;
 import com.listofusers.withspring.Requests.userPutRequestBody;
 import com.listofusers.withspring.domain.user;
-import com.listofusers.withspring.exceptions.BadRequestException;
-import com.listofusers.withspring.handler.RestExceptionHandler;
-import com.listofusers.withspring.repository.userRepository;
 import com.listofusers.withspring.service.userService;
 import com.listofusers.withspring.util.uerPostRequestBodyCreator;
 import com.listofusers.withspring.util.userCreator;
 import com.listofusers.withspring.util.userPutRequestBodyCreator;
-import javassist.tools.web.BadHttpRequest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,11 +17,9 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 
 @ExtendWith(SpringExtension.class)
