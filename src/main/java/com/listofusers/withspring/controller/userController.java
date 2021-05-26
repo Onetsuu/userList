@@ -44,7 +44,7 @@ public class userController {
     @PostMapping //testado
     public ResponseEntity<user> save(@RequestBody userPostRequestBody userPostRequestBody){
         return new ResponseEntity<>(userService.save(userPostRequestBody)
-        ,HttpStatus.OK);
+        ,HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")//testado
     public ResponseEntity<Void> delete(@PathVariable long id){

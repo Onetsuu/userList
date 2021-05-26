@@ -154,7 +154,7 @@ class userControllerTest {
     @Test
     @DisplayName("save returns an user when sucessful")
     void save_ReturnsAnUser_whenUnsucessfull(){
-        user user = userController.save(uerPostRequestBodyCreator.CreateAnimePostRequestBody()).getBody();
+        user user = userController.save(uerPostRequestBodyCreator.CreateUserPostRequestBody()).getBody();
         Assertions.assertThat(user).isNotNull().isEqualTo(userCreator.createValidUser());
 
     }

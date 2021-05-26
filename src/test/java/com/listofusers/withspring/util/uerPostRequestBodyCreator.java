@@ -4,7 +4,7 @@ import com.listofusers.withspring.Requests.userPostRequestBody;
 
 public class uerPostRequestBodyCreator {
 
-    public static userPostRequestBody CreateAnimePostRequestBody(){
+    public static userPostRequestBody CreateUserPostRequestBody(){
         return userPostRequestBody.
                 builder().
                 name(userCreator.createUserToBeSaved().getName()).

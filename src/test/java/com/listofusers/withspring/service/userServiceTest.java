@@ -145,7 +145,7 @@ class userServiceTest {
     @Test
     @DisplayName("save returns an user when sucessful")
     void save_ReturnsAnUser_whenUnsucessfull(){
-        user user = userService.save(uerPostRequestBodyCreator.CreateAnimePostRequestBody());
+        user user = userService.save(uerPostRequestBodyCreator.CreateUserPostRequestBody());
         Assertions.assertThat(user).isNotNull().isEqualTo(userCreator.createValidUser());
 
     }

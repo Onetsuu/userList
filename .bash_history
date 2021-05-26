@@ -60,3 +60,6 @@ git add .
 git commit -m "userServiceTest pt1, estruturação para o testes"
 git push origin mater
 git push origin master
+git add .
+git commit -m "userServiceTest pt2 completo"
+git push origin master
